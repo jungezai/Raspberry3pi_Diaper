@@ -1,0 +1,59 @@
+function pushAWS(addr, vt, vh, callback) {
+	//var addr = 'Sim';
+	var util = require('util');
+	var spawn = require('child_process').spawn;
+	var execFile = require('child_process').execFile;
+	var mosqparam = [
+  			//'--cafile', 'certs/rootCA.pem',
+			//'--cert', 'certs/keys/certificate.pem',
+			//'--key', 'certs/keys/private.key',
+			//'-h', 'a7dsuf6iddqdg.iot.us-west-2.amazonaws.com',
+			'-h', '192.168.3.94',
+			'-p', '1883'
+	];
+	var logDate = new Date();
+	var postData = {
+		datetime: logDate.toISOString(),
+		temperature: parseFloat(vt),
+		humidity: parseFloat(vh),
+		addr:addr
+	};
+	console.log(postData);
+
+	/*
+	// publish to main data queue (for DynamoDB)
+	execFile('mosquitto_pub',
+		 mosqparam.concat('-t',  'temp-humidity/DiaperSens-' + addr, '-m',JSON.stringify(postData)),
+		 function(error, stdout, stderr) {
+		 // published
+		 callback(false, error);
+	});
+	// publish to device shadow
+	var shadowPayload = {
+		state: {
+			desired: {
+				datetime: logDate.toISOString(),
+				temperature: parseFloat(vt),
+				humidity: parseFloat(vh)
+			}
+		}
+	};
+	execFile('mosquitto_pub',
+		 mosqparam.concat('-t','$aws/things/DiaperSens-' + addr + '/shadow/update', '-m', JSON.stringify(shadowPayload)), 
+		 function(error, stdout, stderr) {
+			// shadow update done
+			callback(true, error);
+	});
+*/
+
+	execFile('mosquitto_pub',
+		 mosqparam.concat('-t','mqtt', '-m',
+		 JSON.stringify(postData)),
+		 function(error, stdout, stderr) {
+			// shadow update done
+			callback(true, error);
+	});
+
+
+	
+}

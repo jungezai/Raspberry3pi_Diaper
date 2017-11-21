@@ -1,0 +1,57 @@
+UNIT                               LOAD   ACTIVE SUB     DESCRIPTION
+autologin@tty1.service             loaded active running Getty on tty1
+avahi-daemon.service               loaded active running Avahi mDNS/DNS-SD Stack
+bluetooth.service                  loaded active running Bluetooth service
+console-setup.service              loaded active exited  LSB: Set console font and keymap
+cron.service                       loaded active running Regular background program processing daemon
+dbus.service                       loaded active running D-Bus System Message Bus
+dhcpcd.service                     loaded active running dhcpcd on all interfaces
+diapersens.service                 loaded active exited  LSB: DiaperSens
+dphys-swapfile.service             loaded active exited  LSB: Autogenerate and use a swap file
+fake-hwclock.service               loaded active exited  Restore / save the current clock
+hciuart.service                    loaded active running Configure Bluetooth Modems connected by UART
+hdparm.service                     loaded active exited  LSB: Tune IDE hard disks
+ifup@wlan0.service                 loaded active exited  ifup for wlan0
+kbd.service                        loaded active exited  LSB: Prepare console
+keyboard-setup.service             loaded active exited  LSB: Set preliminary keymap
+kmod-static-nodes.service          loaded active exited  Create list of required static device nodes for the 
+lightdm.service                    loaded active running Light Display Manager
+networking.service                 loaded active exited  LSB: Raise network interfaces.
+nmbd.service                       loaded active running LSB: start Samba NetBIOS nameserver (nmbd)
+ntp.service                        loaded active running LSB: Start NTP daemon
+polkitd.service                    loaded active running Authenticate and Authorize Users to Run Privileged T
+raspi-config.service               loaded active exited  LSB: Switch to ondemand cpu governor (unless shift k
+rc-local.service                   loaded active exited  /etc/rc.local Compatibility
+rsyslog.service                    loaded active running System Logging Service
+samba-ad-dc.service                loaded active exited  LSB: start Samba daemons for the AD DC
+serial-getty@ttyS0.service         loaded active running Serial Getty on ttyS0
+smbd.service                       loaded active running LSB: start Samba SMB/CIFS daemon (smbd)
+ssh.service                        loaded active running OpenBSD Secure Shell server
+systemd-fsck-root.service          loaded active exited  File System Check on Root Device
+systemd-fsck@dev-mmcblk0p1.service loaded active exited  File System Check on /dev/mmcblk0p1
+systemd-journald.service           loaded active running Journal Service
+systemd-logind.service             loaded active running Login Service
+systemd-modules-load.service       loaded active exited  Load Kernel Modules
+systemd-random-seed.service        loaded active exited  Load/Save Random Seed
+systemd-remount-fs.service         loaded active exited  Remount Root and Kernel File Systems
+systemd-rfkill@rfkill0.service     loaded active exited  Load/Save RF Kill Switch Status of rfkill0
+systemd-rfkill@rfkill1.service     loaded active exited  Load/Save RF Kill Switch Status of rfkill1
+systemd-setup-dgram-qlen.service   loaded active exited  Increase datagram queue length
+systemd-sysctl.service             loaded active exited  Apply Kernel Variables
+systemd-tmpfiles-setup-dev.service loaded active exited  Create Static Device Nodes in /dev
+systemd-tmpfiles-setup.service     loaded active exited  Create Volatile Files and Directories
+systemd-udev-trigger.service       loaded active exited  udev Coldplug all Devices
+systemd-udevd.service              loaded active running udev Kernel Device Manager
+systemd-update-utmp.service        loaded active exited  Update UTMP about System Boot/Shutdown
+systemd-user-sessions.service      loaded active exited  Permit User Sessions
+triggerhappy.service               loaded active running LSB: triggerhappy hotkey daemon
+udev-finish.service                loaded active exited  Copy rules generated while the root was ro
+udisks2.service                    loaded active running Disk Manager
+user@1000.service                  loaded active running User Manager for UID 1000
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+
+[1;39m49 loaded units listed.[0m Pass --all to see loaded but inactive units, too.
+To show all installed unit files use 'systemctl list-unit-files'.
