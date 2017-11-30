@@ -1,0 +1,53 @@
+XuXuKou BLE Protocol
+====================
+
+1. Peripheral local name is "XuXuKou" (ours is "CFX_DIAPER").
+
+2. Peripheral Service UUID: 6e400001b5a3f393e0a9e50e24dcca9e
+   - Connectable
+
+3. Peripheral Characteristics UUID: 6e400003b5a3f393e0a9e50e24dcca9e
+   - Support notification
+
+4. Notification data format (totally N bytes):
+   data (byte): 0 1 2 3 4 5 6 ... (N-1)
+   byte 0:         packet data length which equals to (N-1) 
+   byte 1:         flag
+   byte 2 ~ (N-2): data payload
+   byte (N-1):     checksum
+
+   Notification data with the wrong checksum needs to be dropped silently.
+   To compute the XOR checksum of byte 0 to N-2, do:
+   {
+	var cs = 0;
+	for (var i = 0; i < data[0]; i++) {
+		cs ^= data[i];
+	}
+	if (cs == data[6]) {
+		// checksum pass
+	} else {
+		// checksum fail
+	}
+   }
+
+   Right now XuXuKou supports 2 data types (flag == 1 and flag == 2).
+   - When (flag == 1):
+     -- byte 0 is always 6.
+     -- byte 1 is always 1.
+     -- byte 2 and byte 3 are temperature in BE16 format (byte 2 is the
+        high byte, byte 3 is the low byte) divided by 10.0. For example:
+        if data[2] is 00, and data[3] is d9,
+        Temperature (in Celsius) = ((0x00 << 8) + 0xd9) / 10.0 = 21.7 C
+     -- byte 4 and byte 5 are humidity in BE16 format (byte 4 is the
+        high byte, byte 5 is the low byte) divided by 10.0. For example:
+        if data[4] is 02, and data[5] is 06,
+        Humidity (RH %) = ((0x02 << 8) + 0x06) / 10.0 = 51.8 %
+     -- byte 6 is XOR checksum of the previous bytes (see above for how
+        to verify checksum of every notification data packet).
+     
+   - When (flag == 2):
+     -- byte 0 is always 4.
+     -- byte 1 is always 2.
+     -- byte 2 is (probably) battery value. For example: if data[2] is 64
+        Battery (%) = 0x64 = 100 %
+     -- byte 3 is checksum (the same as above)

@@ -1,0 +1,29 @@
+{
+  "name": "sensedge",
+  "version": "1.0.0",
+  "description": "ElderSens SensEdge Router software",
+  "main": "sensedge.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://chuyee@bitbucket.org/eldersens/sensedge.git"
+  },
+  "keywords": [
+    "sensedge"
+  ],
+  "author": "Zhu Yi",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/eldersens/sensedge#readme",
+  "dependencies": {
+    "bluetooth-hci-socket": "github:sandeepmistry/node-bluetooth-hci-socket#rework-kernel-workarounds",
+    "ip": "^1.1.5",
+    "mysql": "^2.15.0",
+    "noble": "^1.8.1",
+    "nodemailer": "^4.4.0"
+  }
+}
